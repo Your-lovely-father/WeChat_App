@@ -36,7 +36,7 @@
                     </div>
                 </div>
                 <div class="chat-way" v-show="currentChatWay">
-                    <input class="chat-txt" type="text" v-on:focus="focusIpt" v-on:blur="blurIpt"/>
+                    <input class="chat-txt" type="text" v-on:focus="focusIpt" v-on:blur="blurIpt" @keyup.enter="send" v-model="value"/>
                 </div>
                 <span class="expression iconfont icon-dialogue-smile"></span>
                 <span class="more iconfont icon-dialogue-jia"></span>
@@ -73,8 +73,8 @@
             return {
                 pageName: this.$route.query.name,
                 currentChatWay: true, //ture为键盘打字 false为语音输入
-                timer: null
-                    // sayActive: false // false 键盘打字 true 语音输入
+                timer: null,// sayActive: false // false 键盘打字 true 语音输入
+                value:''
             }
         },
         beforeRouteEnter(to, from, next) {
@@ -196,6 +196,9 @@
                     msgMore.style.display = 'none'
                     container.forEach(item=>item.style.backgroundColor='#fff')
                 }
+            },
+            send(){
+                alert('4444')
             }
         }
     }
